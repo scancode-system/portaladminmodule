@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/portaladmin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\PortalAdmin\\Providers\\PortalAdminServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\PortalAdmin\\": ""
+        }
+    }
+}
