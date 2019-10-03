@@ -3,7 +3,7 @@
 Route::prefix('admin')->group(function() {
 
 	// Base
-	Route::get('/', 'CompanyController@companies')->name('admin');
+	Route::get('/', 'BaseController@home')->name('admin.home');
 
 	// companies
 	Route::get('/companies', 'CompanyController@index')->name('admin.companies');

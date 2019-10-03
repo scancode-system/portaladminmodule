@@ -12,4 +12,10 @@ class BaseController extends Controller
 		$this->middleware('auth:admin');
 	}
 
+
+	public function home(){
+		return redirect()->route('admin.companies');
+		//dd('sd');
+	}
+
 }
