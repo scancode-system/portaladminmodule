@@ -28,6 +28,7 @@ class CreateEventEmail extends Mailable
      */
     public function build()
     {
+        //dd('ds');
         return $this->view('portaladmin::emails.create_event');
     }
 }
