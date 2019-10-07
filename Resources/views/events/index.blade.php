@@ -31,7 +31,7 @@
 						<a href="">Download</a>
 					</th>
 					<th class="text-right">
-						{{ Form::Open(['route' => ['admin.events.destroy', 1, 4], 'method' => 'delete']) }}
+						{{ Form::Open(['route' => ['admin.events.destroy', $company->id, $event->id], 'method' => 'delete']) }}
 						<button type="submit" class="btn btn-danger">Excluir</button>
 						{{ Form::Close() }}
 					</th>

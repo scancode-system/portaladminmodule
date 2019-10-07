@@ -28,6 +28,6 @@ class CreateCompanyEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('portaladmin::emails.create_company');
+        return $this->from('scancode@scancode.com.br', 'Scancode System')->view('portaladmin::emails.create_company');
     }
 }

@@ -11,14 +11,18 @@ class CreateEventEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $company;
+    public $event;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($company, $event)
     {
-        //
+        $this->company = $company;
+        $this->event = $event;
     }
 
     /**
@@ -28,7 +32,6 @@ class CreateEventEmail extends Mailable
      */
     public function build()
     {
-        //dd('ds');
-        return $this->view('portaladmin::emails.create_event');
+        return $this->from('scancode@scancode.com.br', 'Scancode System')->subject('Acesso ao portal para o evento '.$this->event->name)->view('portaladmin::emails.create_event');
     }
 }

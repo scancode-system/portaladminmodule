@@ -15,4 +15,10 @@ Route::prefix('admin')->group(function() {
 	Route::post('/events/{company}', 'EventController@store')->name('admin.events.store');
 	Route::delete('/events/{company}/{event}', 'EventController@destroy')->name('admin.events.destroy');
 
+
+	//Email
+	Route::get('/email/{company}/{event}', 'EmailController@import')->name('email.import');
+
+//		Route::get('/email', 'EventController@destroy')->name('admin.events.destroy');
+
 });
