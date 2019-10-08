@@ -5,6 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<style>
+.icon-footer{height: 30px;}
+
 		.logo{height: 100px;}
 		.container-table{width: 650px; max-width: 650px;}
 		.icon-help{height: 100px;}
@@ -524,17 +526,20 @@ h6, .h6 {
 				<p class="lead text-white px-5">
 					Qualquer dúvida para a validação dos dados ou na utilização do portal entrar em contato
 				</p>
-				<img src="{{ $message->embed('modules/portal/img/brand/logo.png') }}" class="icon-help">
+				<img src="{{ $message->embed('modules/portal/img/email/help.png') }}" class="icon-help">
 			</td>
 		</tr>
 		<tr>
 			<td class="bg-secondary text-white py-2 pl-5">
-				<a href="" class="text-white">suporte@scancode.com.br</a>
+				<img src="{{ $message->embed('modules/portal/img/email/email.jpeg') }}" class="icon-footer" valign="middle">
+				<a href="" class="text-dark">suporte@scancode.com.br</a>
 			</td>
-			<td class="bg-secondary text-white">
+			<td class="bg-secondary text-dark">
+				<img src="{{ $message->embed('modules/portal/img/email/tel.jpeg') }}" class="icon-footer" valign="middle">
 				11 3284-4812
 			</td>
-			<td class="bg-secondary text-white text-right pr-5">
+			<td class="bg-secondary text-dark text-right pr-5" valign="middle">
+				<img src="{{ $message->embed('modules/portal/img/email/zap.jpeg') }}" class="icon-footer">
 				11 99999-9999
 			</td>
 

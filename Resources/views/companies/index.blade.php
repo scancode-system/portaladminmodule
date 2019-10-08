@@ -4,7 +4,7 @@
 <div class="card">
 	<h5 class="card-header">Empresas</h5>
 	<div class="card-body">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover"> 
 			<thead>
 				<tr>
 					<th scope="col">Nome</th>
@@ -23,9 +23,11 @@
 					<td class="text-center">{{ $company->events()->count() }}</td>
 					<td class="text-right">
 						{{ Form::Open(['route' => ['admin.companies.destroy', $company->id], 'method' => 'delete']) }}
-						<a href="{{ route('admin.companies.login', $company->id) }}" class="btn btn-secondary mr-3">Logar</a>
-						<a href="{{ route('admin.events', $company->id) }}" class="btn btn-primary mr-3">Vizualizar</a>
+						<div class="btn-group" role="group" aria-label="Basic example">
+						<a href="{{ route('admin.companies.login', $company->id) }}" class="btn btn-primary">Logar</a>
+						<a href="{{ route('admin.events', $company->id) }}" class="btn btn-secondary">Vizualizar</a>
 						<button type="submit" class="btn btn-danger">Excluir</button>
+						</div>
 						{{ Form::Close() }}
 					</td>
 				</tr>
