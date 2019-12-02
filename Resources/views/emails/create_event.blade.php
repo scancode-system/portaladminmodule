@@ -106,6 +106,8 @@ h6, .h6 {
 		}
 
 		.text-center{text-align: center;}
+		.text-left{text-align: left;}
+
 		.w-100{width: 100%}
 
 		.w-25 {
@@ -519,6 +521,10 @@ h6, .h6 {
 					Seu evento já esta disponivel no portal. Segue abaixo o link para a validação do seus dados
 				</p>
 				<a href="{{ route('email.import', [base64_encode($company->id), base64_encode($event->id)]) }}" class="btn btn-danger px-5 py-3 mt-2 mx-auto my-1 text-white">Importe seus dados aqui</a>
+				<p class="text-white lead px-5 text-left mt-3">
+					Login: <span class="text-white">{{ $company->email }}</span><br>
+					Senha: {{ base64_decode($company->password_64) }}
+				</p>
 			</td>
 		</tr>
 		<tr>
