@@ -12,7 +12,13 @@ Route::prefix('admin')->group(function() {
 
 	// Events
 	Route::get('/events/{company}', 'EventController@index')->name('admin.events');
+	Route::get('/events/{company}/{event}', 'EventController@edit')->name('admin.events.edit');
+
+	Route::put('/events/{event}/update/validations', 'EventController@updateValidations')->name('admin.events.update.validations');
+		Route::put('/events/{event}/update/settings', 'EventController@updateSettings')->name('admin.events.update.settings');
+
 	Route::post('/events/{company}', 'EventController@store')->name('admin.events.store');
+	
 	Route::delete('/events/{company}/{event}', 'EventController@destroy')->name('admin.events.destroy');
 
 

@@ -14,29 +14,9 @@
 		</div>
 		{{ Form::Close() }}
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th scope="col">Nome</th>
-					<th scope="col">Token</th>
-					<th scope="col">Backup</th>
-					<th></th>
-				</tr>
-			</thead>
+			@include('portaladmin::events.tables.thead')
 			<tbody>
-				@foreach($events as $event)
-				<tr>
-					<th>{{ $event->name }}</th>
-					<th>{{ $event->token }}</th>
-					<th>
-						<a href="">Download</a>
-					</th>
-					<th class="text-right">
-						{{ Form::Open(['route' => ['admin.events.destroy', $company->id, $event->id], 'method' => 'delete']) }}
-						<button type="submit" class="btn btn-danger">Excluir</button>
-						{{ Form::Close() }}
-					</th>
-				</tr>
-				@endforeach
+				@each('portaladmin::events.tables.tr', $events, 'event')
 			</tbody>
 		</table>
 	</div>

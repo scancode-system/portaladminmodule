@@ -13,6 +13,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 
         // events
 		View::composer('portaladmin::events.index', 'Modules\PortalAdmin\Http\ViewComposers\Events\IndexComposer');
+		View::composer('portaladmin::events.edit', 'Modules\PortalAdmin\Http\ViewComposers\Events\EditComposer');
 
 		// faq topics
 		View::composer('portaladmin::faq_topics.index', 'Modules\PortalAdmin\Http\ViewComposers\FaqTopic\IndexComposer');
