@@ -8,6 +8,10 @@ use Modules\Portal\Entities\Company;
 use Modules\Portal\Entities\Event;
 use Modules\PortalAdmin\Http\Requests\RequestEvent;
 use Modules\Portal\Entities\EventSetting;
+use Modules\Portal\Entities\EventValidation;
+use Modules\Portal\Entities\EventValidationAppend;
+use Modules\Portal\Entities\Append;
+
 
 class EventController extends BaseController
 {
@@ -57,6 +61,44 @@ class EventController extends BaseController
             }
         }
         return back()->with('success_validation', 'As validações para o evento foram alteradas.');
+    }
+
+    public function updateAppends(Request $request, Event $event)
+    {
+        $boolean_appends = $request->appends;
+
+        $appends = collect([]);
+        $event_validation_appends = $event->event_validation_appends;
+        foreach ($event_validation_appends as $event_validation_append) {
+            $appends->push($event_validation_append->appendModel);
+        }
+
+        foreach ($boolean_appends as $append_id => $boolean) 
+        {
+            $append = Append::find($append_id);
+            $validation = $append->validation;
+            $event_validation = EventValidation::where('event_id', $event->id)->where('validation_id', $validation->id)->first();
+            $has = false;
+            foreach ($appends as $append) 
+            {
+                if($append->id == $append_id)
+                {
+                    $has = true;
+                }
+            }
+
+            if($boolean && !$has){
+                if($event_validation){
+                    EventValidationAppend::create(['event_validation_id' => $event_validation->id, 'append_id' => $append_id]);
+                } else {
+                    return back()->withErrors(["É necessário que a validação ".$validation->alias." esteja primeiramente selecionado."]);
+                }
+            }
+            if($has && !$boolean){
+                EventValidationAppend::where('event_validation_id', $event_validation->id)->where('append_id', $append_id)->first()->delete();
+            }
+        }
+        return back()->with('success_append', 'As extenções de validações para o evento foram alteradas.');
     }
 
 

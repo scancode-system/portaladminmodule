@@ -27,12 +27,30 @@
 			</div>
 		</div>
 		{{ Form::close() }}
+		{{ Form::open(['route' => ['admin.events.update.appends', $event], 'method' => 'put']) }}
 		<div class="card">
 			<h5 class="card-header">Extensão - Validações</h5>
 			<div class="card-body">
-				ds
+				@alert_errors()
+				@alert_success(['key_message' => 'success_append'])
+				@foreach($appends as $append)
+				<div class="form-group row text-capitalize {{ $loop->last?'mb-0':'' }}">
+					{{ Form::label($append->module_alias, $append->alias, ['class' => 'col col-form-label']) }}
+					<div class="col text-right">
+						<label class="switch switch-primary switch-lg mb-0 ml-3">
+							{{ Form::hidden('appends['.$append->id.']', 0) }}
+							{{ Form::checkbox('appends['.$append->id.']', 1, $append->checked,['class' => 'switch-input']) }}
+							<span class="switch-slider"></span>
+						</label>
+					</div>
+				</div>
+				@endforeach
+			</div>
+			<div class="card-footer text-muted">
+				{{ Form::button('<i class="fa fa-save"></i><span>Salvar</span>', ['class' => 'btn btn-brand btn-primary', 'type' => 'submit']) }}
 			</div>
 		</div>
+		{{ Form::close() }}
 	</div>
 	<div class="col-md-6">
 		{{ Form::open(['route' => ['admin.events.update.settings', $event], 'method' => 'put']) }}

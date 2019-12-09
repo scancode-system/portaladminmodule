@@ -6,18 +6,21 @@ use Modules\Portal\Http\ViewComposers\SuperComposer\SuperComposer;
 use Modules\Portal\Entities\Event;
 use Modules\Portal\Entities\Validation;
 use Modules\Portal\Entities\Setting;
+use Modules\Portal\Entities\Append;
 use Illuminate\View\View;
 
 class EditComposer extends SuperComposer {
 
     private $event;
     private $validations;
-    private $settings; 
+    private $settings;
+    private $appends; 
 
     public function assign($view){
         $this->event();
         $this->validations();
         $this->settings();
+        $this->appends();
     }
 
 
@@ -65,11 +68,33 @@ class EditComposer extends SuperComposer {
         $this->settings = $settings;
     }
 
+    public function appends()
+    {
+        $appends = Append::all();
+        $event_appends = $this->event->event_appends;
+
+        $event_validation_appends = $this->event->event_validation_appends;
+
+        foreach ($appends as $append) 
+        {
+            $append->checked = false;
+            foreach ($event_validation_appends as $event_validation_append) {
+                if($event_validation_append->appendModel->id == $append->id)
+                {
+                    $append->checked = true;
+                }
+            }
+        }
+
+        $this->appends = $appends;
+    }
+
 
     public function view($view){
         $view->with('event', $this->event);
         $view->with('validations', $this->validations);
         $view->with('settings', $this->settings);
+        $view->with('appends', $this->appends);
     }
 
 
