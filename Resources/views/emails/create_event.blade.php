@@ -538,7 +538,7 @@ h6, .h6 {
 		<tr>
 			<td class="bg-secondary text-white py-2 pl-5">
 				<img src="{{ $message->embed('modules/portal/img/email/email.jpeg') }}" class="icon-footer" valign="middle">
-				<a href="" class="text-dark">suporte@scancode.com.br</a>
+				<a href="" class="text-dark">operacional@scancode.com.br</a>
 			</td>
 			<td class="bg-secondary text-dark">
 				<img src="{{ $message->embed('modules/portal/img/email/tel.jpeg') }}" class="icon-footer" valign="middle">
