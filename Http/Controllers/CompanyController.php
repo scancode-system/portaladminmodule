@@ -18,6 +18,12 @@ class CompanyController extends BaseController
         return view('portaladmin::companies.index');
     }
 
+    public function update(Request $request, Company $company)
+    {
+        $company->update($request->all());
+        return back()->with('success', 'Observação atualizada.');
+    }
+
 
     public function destroy(Request $request, Company $company){
         $company->delete();

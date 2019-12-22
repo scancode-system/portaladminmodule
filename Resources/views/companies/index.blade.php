@@ -24,11 +24,13 @@
 					<td class="text-right">
 						{{ Form::Open(['route' => ['admin.companies.destroy', $company->id], 'method' => 'delete']) }}
 						<div class="btn-group" role="group" aria-label="Basic example">
-						<a href="{{ route('admin.companies.login', $company->id) }}" class="btn btn-primary">Logar</a>
-						<a href="{{ route('admin.events', $company->id) }}" class="btn btn-secondary">Vizualizar</a>
-						<button type="submit" class="btn btn-danger">Excluir</button>
+							<a href="{{ route('admin.companies.login', $company->id) }}" class="btn btn-primary"><i class="fa fa-dashboard"></i></a></a>
+							<a href="#" data-toggle="modal" data-target="#modal_companies_observation_view_{{ $company->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a></a>
+							<a href="{{ route('admin.events', $company->id) }}" class="btn btn-secondary"><i class="fa fa-edit"></i></a>
+							<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
 						</div>
 						{{ Form::Close() }}
+						@include('portaladmin::companies.modals.modal_companies_observation_view')
 					</td>
 				</tr>
 				@endforeach

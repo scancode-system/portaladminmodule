@@ -7,6 +7,7 @@ Route::prefix('admin')->group(function() {
 
 	// companies
 	Route::get('/companies', 'CompanyController@index')->name('admin.companies');
+	Route::put('/companies/{company}', 'CompanyController@update')->name('admin.companies.update');
 	Route::delete('/companies/{company}', 'CompanyController@destroy')->name('admin.companies.destroy');
 	Route::get('/companies/{company}/login', 'CompanyController@login')->name('admin.companies.login');
 
