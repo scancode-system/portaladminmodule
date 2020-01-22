@@ -1,9 +1,6 @@
 <tr>
 	<td class="align-middle">{{ $event->name }}</td>
 	<td class="align-middle">{{ $event->token }}</td>
-	<td class="align-middle">
-		<a href="">Download</a>
-	</td>
 	<td class="text-right align-middle">
 		{{ Form::Open(['route' => ['admin.events.destroy', $event->company->id, $event->id], 'method' => 'delete']) }}
 		<div class="btn-group" role="group">
